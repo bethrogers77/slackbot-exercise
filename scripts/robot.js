@@ -29,7 +29,7 @@ function translatePrompt(prompt, isCaseSensitive) {
 
 function getParams(userPrompt, templatePrompt) {
   userPrompt = userPrompt.trim()
-  templatePrompt = templatePrompt.trim()
+  templatePrompt = templatePrompt.toLowerCase().trim()
 
   const mainStrings = templatePrompt.split(paramExp)
   const matches = templatePrompt.match(paramMatch)
@@ -37,14 +37,14 @@ function getParams(userPrompt, templatePrompt) {
     return {}
   }
 
-  const firstPlaceholder = userPrompt.indexOf(mainStrings[0])
+  const firstPlaceholder = userPrompt.toLowerCase().indexOf(mainStrings[0])
   let promptPlaceholder = userPrompt.substring(firstPlaceholder + mainStrings[0].length)
   const params = {}
   for (let i = 0; i < matches.length; i++) {
     const arg = matches[i].substring(2, matches[i].length - 1)
     const argMatches = arg.split(" as ").map(s => s.trim())
     let paramName = arg
-    const nextPlacholder = promptPlaceholder.indexOf(mainStrings[i + 1])
+    const nextPlacholder = promptPlaceholder.toLowerCase().indexOf(mainStrings[i + 1])
     const paramValue = nextPlacholder > 0 ? promptPlaceholder.substring(0, nextPlacholder) : promptPlaceholder
     let paramType = 'string'
     if (argMatches.length > 1) {
