@@ -1,5 +1,5 @@
 // Set this assignment to true if you do want to use it.
-module.exports.ACTIVATE_BOT = false;
+module.exports.ACTIVATE_BOT = true;
 
 module.exports.botScripts = [
   // Write an interaction where one user says "I'm tired", the bot says "Wake up!"
@@ -7,7 +7,16 @@ module.exports.botScripts = [
   // mychatbot> I'm tired
   // mychatbot responds "Wake up!"
   
-
+  {
+    label: 'tired',
+    prompt: 'I am tired',
+    handler: function () {
+      return 'WaKe up!';
+    },
+    isReply: false,
+    isCaseSensitive: false,
+    isListening: true,
+  },
 
 
 
@@ -17,7 +26,21 @@ module.exports.botScripts = [
   // 
   // mychatbot> mychatbot What's the area of a circle with radius 5?
   // mychatbot responds to user "The area is 78.5398...."
-  
+  {
+    label: 'An Example Script with Typed Variables',
+    prompt: 'What is the area of a circle with a radius #{amount as number}',
+    handler: function (params) {
+      const area = Math.PI * (params.amount * params.amount) ;
+      return (
+        'Area = ' +
+        Math.ceil(area)
+                
+      );
+    },
+    isReply: false,
+    isCaseSensitive: false,
+    isListening: true,
+  },
 
 
 
