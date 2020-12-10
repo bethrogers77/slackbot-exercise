@@ -51,4 +51,17 @@ module.exports.botScripts = [
   // 
   // mychatbot> mychatbot Tell me a story with Jack and Jill
   // mychatbot responds to user "Jack and Jill went up the hill to fetch a pail of water."
-];
+  {
+    label: 'Tell story',
+    prompt: 'Tell me a story with #{name1} and #{name2}',
+    handler: function (params) {
+      return  params.name1 + ' and ' +  params.name2 + ' went up the hill to fetch a pail of water.';
+           
+    },
+
+    isReply: false,
+    isCaseSensitive: false,
+    isListening: true,
+  },
+
+  ];

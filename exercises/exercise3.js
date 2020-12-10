@@ -97,6 +97,7 @@ module.exports.botScripts = [
     },
       isReply: false,
       isCaseSensitive: false,
+      
       isListening: true,
  },
 
